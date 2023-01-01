@@ -1,21 +1,19 @@
-score = []
+spots = list(map(int, input().split()))
 count = 0
-eyes = list(map(int, input().split()))
+counts = []
 
 for i in range(3):
-    for j in eyes:
-        if eyes[i] == j:
-            count += 1
-    score.append(count)
+    for j in spots:
+        if spots[i] == j:
+            count += 1 # min 1, max 3
+    counts.append(count)
     count = 0
-count = max(score)
-i = score.index(count)
 
-if count == 3:
-    reward = 10000 + eyes[i]*1000
-elif count == 2:
-    reward = 1000 + eyes[i]*100
+if max(counts) == 3:
+    reward = 10000 + spots[0]*1000
+elif max(counts) == 2:
+    reward = 1000 + spots[counts.index(2)]*100
 else:
-    reward = max(eyes) * 100
+    reward = max(spots) * 100
 
 print(reward)
